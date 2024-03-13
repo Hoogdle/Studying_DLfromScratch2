@@ -11,13 +11,55 @@
 # h : Nx4
 # h = xW + b
 
-import numpy as np
-W1 = np.random.randn(2,4) #가중치
-b1 = np.random.randn(4) #편향
-x = np.random.randn(10,2) # 입력
-h = np.matmul(x,W1)+b1
+# import numpy as np
+# W1 = np.random.randn(2,4) #가중치
+# b1 = np.random.randn(4) #편향
+# x = np.random.randn(10,2) # 입력
+# h = np.matmul(x,W1)+b1 #(b는 10,4로 자동변환, 브로드캐스트)
 # 10개의 샘플 데이터 각각을 완전연결계층으로 변환
 # x[0] : 0번 째 입력 데이터
 # x[1] : 1번 째 입력 데이터
 # h[0] : 0번 째 은닉층 뉴런
 # h[1] : 1번 째 은닉층 뉴런
+
+# 완전연결계층에 의한 변환은 '선형' 변환. 활성화 함수로 '비선형' 효과를 부여
+# 비선형 활성화 함수를 이용함으로써 신경망의 표현력을 높일 수 있다.
+
+# 시그모이드 함수
+# 0과 1사이의 실수를 출력
+# def sigmoid(x):
+#     return 1/(1+np.exp(-x))
+# a = sigmoid(h) # 은닉층 뉴런에 시그모이드 함수 사용
+
+# 최종 코드
+# 해당 교재에서는 '행벡터'를 기준으로
+import numpy as np
+
+def sigmoid(x):
+    return 1/(1+np.exp(-x))
+
+x = np.random.randn(10,2) # 2차원의 데이터 10개로 미니배치
+W1 = np.random.randn(2,4)
+b1 = np.random.randn(4)
+W2 = np.random.randn(4,3)
+b2 = np.random.randn(3)
+
+h = np.matmul(x,W1) + b1
+a = sigmoid(h)
+s = np.matmul(a,W2) + b2 # s는 (10,3), 10개의 데이터가 한 번에 처리되었고 3차원의 데이터로 변환됨.
+# 3차원이기 때문에 3개의 클래스로 분류할 수 있음. 이 경우 3차원의 출력은 각 클래스에 해당 하는 점수.
+# 만약 분류를 한다면 가장 큰 점수(값)을 내뱉는 뉴런에 해당하는 클래스가 예측 결과에 해당
+
+
+
+### 계층으로 클래스화 및 순전파 구현
+# 이 책에서는
+# 완전열결계층에 의한 변환, Affine 계층
+# 시그모이드 함수에 의한 변환, Sigmoid 계층
+# 기본 변환 수행 메서드, forward()
+# 신경망의 다양한 계층을 클래스로 구현, 이렇게 모듈화 하면 레고 블록 조합하듯 신경망 구축 가능
+
+# 이 책의 구현 규칙
+# 1. 모든 계층은 forward()와 backward() 메서드를 가진다
+# 2. 모든 계층은 인스턴스 변수인 params와 grads를 가진다
+
