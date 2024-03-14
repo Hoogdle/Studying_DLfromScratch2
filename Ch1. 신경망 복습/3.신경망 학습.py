@@ -68,23 +68,110 @@
 # 곱셈노드의 Idea를 갖고옴(입력값을 스와핑해서 상류의 값의 곱하기)
 # x = NxD, W = DxH, y = NxH 일 때
 # ∂L/∂x = ∂L/∂y * Wt (Transpose) ∂L/∂W = xt(transpose) * ∂L/∂y
-import numpy as np
+# import numpy as np
 
-class MatMul:
-    def __init__(self,W):
-        self.params=[W]
-        self.grads=[np.zeros_like(W)] #np.zeros_like() 어떤 변수만큼의 사이즈인 0으로 가득 찬 리스트 반환
-        self.x = None
-    def forward(self,x):
-        W, = self.params
-        out = np.matmul(x,W)
-        self.x = x
-        return out
+# class MatMul:
+#     def __init__(self,W):
+#         self.params=[W]
+#         self.grads=[np.zeros_like(W)] #np.zeros_like() 어떤 변수만큼의 사이즈인 0으로 가득 찬 리스트 반환
+#         self.x = None
+#     def forward(self,x):
+#         W, = self.params
+#         out = np.matmul(x,W)
+#         self.x = x
+#         return out
     
-    def backward(self,dout):
-        W, = self.params
-        dx = np.matmul(dout,W.T)
-        dW = np.matmul(self.x.T,dout)
-        self.grads[0][...] = dW #grads[0] : 얕은 복사, grads[0][...] : 깊은 복사(배열이 가리키는 메모리위치 고정, 그 위치에 원소들을 덮어씌움)
-        # a와 b모두 리스트일 때, a=b : a가 b와 같은 위치를 가리킴, a[...]=b a의 메모리 위치는 유지, a가 가리키는 메모리에 b의 원소가 복제됨.(깊은복사)
-        return dx
+#     def backward(self,dout):
+#         W, = self.params
+#         dx = np.matmul(dout,W.T)
+#         dW = np.matmul(self.x.T,dout)
+#         self.grads[0][...] = dW #grads[0] : 얕은 복사, grads[0][...] : 깊은 복사(배열이 가리키는 메모리위치 고정, 그 위치에 원소들을 덮어씌움)
+#         # a와 b모두 리스트일 때, a=b : a가 b와 같은 위치를 가리킴, a[...]=b a의 메모리 위치는 유지, a가 가리키는 메모리에 b의 원소가 복제됨.(깊은복사)
+#         return dx
+
+
+
+### 기울기 도출과 역전파 구현
+    
+### Sigmoid 계층
+# y = 1/(1+exp(-x)) 에서
+# ∂y/∂x = y(1-y)
+
+# Sigmoid 계층 구현
+# class Sigmoid:
+#     def __init__(self):
+#         self.params,self.grads= [],[]
+#         self.out = None
+
+#     def forward(self,x):
+#         out = 1 / (1+np.exp(-x))
+#         self.out = out
+#         return out
+    
+#     def backward(self,dout):
+#         dx = dout * (1.0-self.out)*self.out
+#         return dx
+    
+# Affine 계층
+# Affine 계층은 y=np.matmul(x,W)+b 로 구현 가능
+# 순전파시 b는 브로드캐스트 되고(repeat)됨
+# 역전파시 b는 np.sum()으로 구현 가능
+
+# Affine 계층 구현
+
+# import numpy as np
+# class Affine:
+#     def __init__(self,W,b):
+#         self.params = [W,b]
+#         self.grads = [np.zeros_like(W),np.zeros_like(b)]
+
+#     def forward(self,x):
+#         W,b = self.params 
+#         out = np.matmul(x,W)+b
+#         self.x = x
+#         return out
+    
+#     def backward(self,dout):
+#         W,b= self.params
+#         dx = np.matmul(dout,W.T)
+#         dW = np.matmul(self.x.T,dout)
+#         db = np.sum(dout,axis=0)
+
+#         self.grads[0][...] = dW
+#         self.grads[1][...] = db
+#         return dx
+
+
+# Softmax with Loss 계층
+# 소프트맥스 함수와 교차 엔트로피 오차는 Softmax with Loss라는 하나의 계층으로 구현할 수 있다.
+
+
+# 가중치 갱신
+# 오차역전파법으로 기울기를 구했으면 그 기울기를 사용해 신경망의 매개변수를 갱신한다.
+# 아래의 순서대로 진행된다.
+# 1. 미니배치 : 훈련 데이터 중에서 무작위로 다수의 데이터를 골라낸다.
+# 2. 기울기 계산 : 오차역전파 법으로 각 가중치 매개변수에 대한 손실함수의 기울기를 구한다
+# 3. 매개변수 갱신 : 기울기를 사용하여 가중치의 매개변수를 갱신한다.
+# 4. 반복 : 1~3 단곌를 필요한 만큼 반복한다.
+
+# cf) Stochastic Gradient Descent(SGD) (그래디언트 디센트)의 Stochastic은 '확률적' 이라는 뜻인데 미니배치로 무작위로 선택된 데이터에 대한 기울기라는 뜻
+
+# SGD 클래스 구현
+# class SGD:
+#     def __init__(self,lr=0.01):
+#         self.lr = lr
+
+#     def update(self,params,grads):
+#         for i in range(len(params)):
+#             params[i] -= self.lr * grads[i]
+
+# SGD 적용 예시(의사코드)
+# model = TwoLayerNet()
+# optimizer = SGD()
+
+# for i in range(10000):
+#     ~~~
+#     x_batch,t_batch = get_mini_batch() # 미니배치 획득
+#     loss = model.foward(x_batch,t_batch)
+#     model.backward()
+#     optimzer.update(model.params,model.grads)
