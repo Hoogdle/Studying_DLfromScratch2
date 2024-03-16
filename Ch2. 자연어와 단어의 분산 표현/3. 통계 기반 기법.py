@@ -1,29 +1,257 @@
-### í†µê³„ ê¸°ë°˜ ê¸°ë²• ### 
+### Åë°è ±â¹İ ±â¹ı ### 
 
-# ë§ë­‰ì¹˜(corpus) : ëŒ€ëŸ‰ì˜ í…ìŠ¤íŠ¸ ë°ì´í„°
-# ë§ë­‰ì¹˜ ì•ˆì˜ ë°ì´í„°ë“¤ì€ ì‚¬ëŒì´ ì“´ ê¸€ì´ê¸°ì— ìì—°ì–´ì— ëŒ€í•œ ì‚¬ëŒì˜ 'ì§€ì‹'ì´ ì¶©ë¶„íˆ ë‹´ê²¨ìˆë‹¤ê³  ë³¼ ìˆ˜ ìˆë‹¤.
-# ex) ë¬¸ì¥ì„ ì“°ëŠ” ë°©ë²•, ë‹¨ì–´ë¥¼ ì„ íƒí•˜ëŠ” ë°©ë²•, ë‹¨ì–´ì˜ ì˜ë¯¸
-# í†µê³„ ê¸°ë°˜ ê¸°ë²•ì€ ë§ë­‰ì¹˜ì—ì„œ ìë™ìœ¼ë¡œ, íš¨ìœ¨ì ìœ¼ë¡œ í•µì‹¬ì„ ì¶”ì¶œí•˜ëŠ” ê²ƒì´ë‹¤.
+# ¸»¹¶Ä¡(corpus) : ´ë·®ÀÇ ÅØ½ºÆ® µ¥ÀÌÅÍ
+# ¸»¹¶Ä¡ ¾ÈÀÇ µ¥ÀÌÅÍµéÀº »ç¶÷ÀÌ ¾´ ±ÛÀÌ±â¿¡ ÀÚ¿¬¾î¿¡ ´ëÇÑ »ç¶÷ÀÇ 'Áö½Ä'ÀÌ ÃæºĞÈ÷ ´ã°ÜÀÖ´Ù°í º¼ ¼ö ÀÖ´Ù.
+# ex) ¹®ÀåÀ» ¾²´Â ¹æ¹ı, ´Ü¾î¸¦ ¼±ÅÃÇÏ´Â ¹æ¹ı, ´Ü¾îÀÇ ÀÇ¹Ì
+# Åë°è ±â¹İ ±â¹ıÀº ¸»¹¶Ä¡¿¡¼­ ÀÚµ¿À¸·Î, È¿À²ÀûÀ¸·Î ÇÙ½ÉÀ» ÃßÃâÇÏ´Â °ÍÀÌ´Ù.
 
 
-### íŒŒì´ì¬ì„ ë§ë­‹ì´ ì „ì²˜ë¦¬í•˜ê¸°
-# ì „ì²˜ë¦¬ : í…ìŠ¤íŠ¸ ë°ì´í„°ë¥¼ ë‹¨ì–´ë¡œ ë¶„í• í•˜ê³  ë¶„í• ëœ ë‹¨ì–´ë“¤ì„ ë‹¨ì–´ ID ëª©ë¡ìœ¼ë¡œ ë³€í™˜í•˜ëŠ” ê²ƒ
+### ÆÄÀÌ½ãÀ» ¸»’VÀÌ ÀüÃ³¸®ÇÏ±â
+# ÀüÃ³¸® : ÅØ½ºÆ® µ¥ÀÌÅÍ¸¦ ´Ü¾î·Î ºĞÇÒÇÏ°í ºĞÇÒµÈ ´Ü¾îµéÀ» ´Ü¾î ID ¸ñ·ÏÀ¸·Î º¯È¯ÇÏ´Â °Í
 
-text = 'You say goodbye and i say hello.' # ë§ë­‰ì¹˜ # ì‹¤ì „ì—ëŠ” ì´ëŸ¬í•œ ë§ë­‰ì¹˜ê°€ ìˆ˜ì²œ~ìˆ˜ë§Œê°œ
+text = 'You say goodbye and i say hello.' # ¸»¹¶Ä¡ # ½ÇÀü¿¡´Â ÀÌ·¯ÇÑ ¸»¹¶Ä¡°¡ ¼öÃµ~¼ö¸¸°³
 text = text.lower()
 text = text.replace('.',' .')
 print(text) #you say goodbye and i say hello .
 words = text.split()
 print(words) #['you', 'say', 'goodbye', 'and', 'i', 'say', 'hello', '.']
 
-# ë‹¨ì–´ ë‹¨ìœ„ë¡œ ë¶„í• ë˜ì–´ ë‹¤ë£¨ê¸° ì‰¬ì›Œì¡Œì§€ë§Œ, í…ìŠ¤íŠ¸ ê·¸ëŒ€ë¡œ ì¡°ì‘í•˜ê¸°ì—ëŠ” ë¶ˆí¸ => ë‹¨ì–´ë§ˆë‹¤ ID ë¶€ì—¬
-# IDì˜ ë¦¬ìŠ¤íŠ¸ë¡œ ì´ìš©í•  ìˆ˜ ìˆë„ë¡ ì†ì§ˆ!
+# ´Ü¾î ´ÜÀ§·Î ºĞÇÒµÇ¾î ´Ù·ç±â ½¬¿öÁ³Áö¸¸, ÅØ½ºÆ® ±×´ë·Î Á¶ÀÛÇÏ±â¿¡´Â ºÒÆí => ´Ü¾î¸¶´Ù ID ºÎ¿©
+# IDÀÇ ¸®½ºÆ®·Î ÀÌ¿ëÇÒ ¼ö ÀÖµµ·Ï ¼ÕÁú!
 
-word_to_id = {} #ë‹¨ì–´ì—ì„œ IDë³€í™˜ ë‹´ë‹¹
-id_to_word = {} #IDì—ì„œ ë‹¨ì–´ë³€í™˜ ë‹´ë‹¹
+word_to_id = {} #´Ü¾î¿¡¼­ IDº¯È¯ ´ã´ç
+id_to_word = {} #ID¿¡¼­ ´Ü¾îº¯È¯ ´ã´ç
 
 for word in words:
     if word not in word_to_id:
         new_id = len(word_to_id)
         word_to_id[word] = new_id
         id_to_word[new_id] = word
+
+print(id_to_word) #{0: 'you', 1: 'say', 2: 'goodbye', 3: 'and', 4: 'i', 5: 'hello', 6: '.'}
+print(word_to_id) #{'you': 0, 'say': 1, 'goodbye': 2, 'and': 3, 'i': 4, 'hello': 5, '.': 6}
+
+# id¸¦ È°¿ëÇØ ´Ü¾î¸¦ °Ë»öÇÏ°Å³ª, ´Ü¾î¸¦ ÅëÇØ id¸¦ °Ë»ö!
+print(id_to_word[1]) #say
+print(word_to_id['say']) #1
+
+# ´Ü¾î¸ñ·Ï => ID ¸ñ·Ï
+import numpy as np
+corpus = [word_to_id[w] for w in words] 
+print(corpus) #[0, 1, 2, 3, 4, 1, 5, 6] #¸®½ºÆ®
+corpus = np.array(corpus)
+print(corpus) #[0 1 2 3 4 1 5 6] ³ÑÆÄÀÌ ¹è¿­
+
+# À§ÀÇ ÇÁ·Î¼¼½º¸¦ ÇÏ³ªÀÇ ÇÔ¼ö·Î(preprocess)
+def preprocess(text):
+    text = text.lower()
+    text = text.replace('.',' .')
+    words = text.split() # splitÀº ¸®½ºÆ®ÇüÀ» ¸®ÅÏ
+    word_to_id = {}
+    id_to_word = {}
+    for word in words:
+        if word not in word_to_id:
+            new_id = len(word_to_id)
+            word_to_id[word] = new_id
+            id_to_word[new_id] = word
+    corpus = np.array([word_to_id[w] for w in words])
+
+    return corpus,word_to_id,id_to_word
+
+# »ç¿ë¿¹½Ã
+text = 'You say goodbye and I say hello'
+corpus, word_to_id, id_to_word = preprocess(text)
+# corpus == ID ¸ñ·Ï
+# word_to_id == ´Ü¾î : ID
+# id_to_word == ID : ´Ü¾î
+# ÀüÃ³¸® °úÁ¤ ¿Ï·á!(¸»¹¶Ä¡¸¦ ´Ù·ê ÁØºñ ¿Ï·á!) => ¸»¹¶Ä¡¸¦ »ç¿ëÇØ ´Ü¾îÀÇ ÀÇ¹Ì¸¦ ÃßÃâÇØ¾ßÇÔ!
+
+
+
+### ´Ü¾îÀÇ ºĞ»ê Ç¥Çö
+# ¸ğµç »öÀº °¢°¢ÀÇ ÀÌ¸§ÀÌ ÀÖ´Ù(ÄÚ¹ßÆ® ºí·ç, ½ÌÅ©·¹µå) 
+# ÀÌ¸§´ë·Î »öÀ» Ç¥ÇöÇÏ´Â ¹æ¹ı, RGB(º¤ÅÍ)¸¦ »ç¿ëÇÏ¿© »öÀ» Ç¥ÇöÇÏ´Â ¹æ¹ıÀÌ Á¸ÀçÇÑ´Ù.
+# RGB·Î Ç¥Çö ÇÏ´Â ¹æ¹ıÀÌ Á» ´õ Á÷°üÀûÀÌ¸ç Á¤È®ÇÏ°Ô ¸í½ÃÇÒ ¼ö ÀÖ´Ù.(ºñ»ö == RGB(170,33,22), ºñ»öÀ» ¸ô¶óµµ ÀÌ »öÀÌ ºÓÀº °èÃşÀÓÀ» ¾Ë ¼ö ÀÖÀ½)
+# ±×·³ ´Ü¾îµµ º¤ÅÍ·Î Ç¥ÇöÇÒ ¼ö ÀÖÁö ¾ÊÀ»±î?
+# ºĞ»êÇ¥Çö(distrbut;ional representation) : ´Ü¾îÀÇ ÀÇ¹Ì¸¦ Á¤È®ÇĞ°Ô ÆÄ¾ÇÇÒ ¼ö ÀÖ´Â º¤ÅÍ Ç¥Çö
+# ºĞ»êÇ¥ÇöÀº °íÁ¤ ±æÀÌÀÇ ¹ĞÁöº¤ÅÍ¸¦ »ç¿ëÇÑ´Ù.([0.21, -0.45, 0.83]), ´Ü¾îÀÇ ºĞ»êÇ¥ÇöÀ» ¾î¶»°Ô ±¸ÃàÇÒ °ÍÀÎÁö°¡ Æ÷ÀÎÆ®
+
+
+### ºĞÆ÷ °¡¼³
+# ÀÚ¿¬¾î Ã³¸®ÀÇ ÁÖ¿ä ±â¹ıÀº ¸ğµÎ ´Ü ÇÏ³ªÀÇ °£´ÜÇÑ ¾ÆÀÌµğ¾î¿¡ »Ñ¸®¸¦ µÎ°í ÀÖ´Ù. => ºĞÆ÷°¡¼³
+# ºĞÆ÷°¡¼³ : ´Ü¾îÀÇ ÀÇ¹Ì´Â ÁÖº¯ ´Ü¾î¿¡ ÀÇÇØ Çü¼ºµÈ´Ù.
+# Áï, ´Ü¾î ÀÚÃ¼·Î´Â ÀÇ¹Ì°¡ ¾ø°í ±× ´Ü¾î°¡ »ç¿ëµÈ ¸Æ¶ôÀÌ ÀÇ¹Ì¸¦ Çü¼ºÇÑ´Ù.
+# ex) I drink beer, We drin wine ==> drink ÁÖº¯¿¡´Â À½·á°¡ µîÀåÇÏ±â ½±´Ù.
+# ex) I guzzle beer, We guzzle wine ==> guzzle°ú drink´Â °°Àº ¸Æ¶ô¿¡¼­ »ç¿ëµÇ±¸³ª!(guzzle°ú drink´Â °¡±î¿î ÀÇ¹Ì ´Ü¾îÀÌ±¸³ª!)
+# ¸Æ¶ô : Æ¯Á¤ ´Ü¾î¸¦ Áß½ÉÀ» µĞ ±× ÁÖº¯´Ü¾î(À©µµ¿ì Å©±â¿¡ µû¶ó ´Ş¶óÁü)
+# ex) You say goodbye and i say hello. ==> goodbye°¡ Áß½ÉÀÏ ¶§ window size = 1, say and°¡ ¸Æ¶ô¿¡ Æ÷ÇÔ
+# ¿©±â¼­´Â ÁÂ¿ì·Î ¶È°°Àº ¼öÀÇ ´Ü¾î¸¦ ¸Æ¶ôÀ¸·Î »ç¿ëÇßÁö¸¸ »óÈ²¿¡ µû¶ó ¿ŞÂÊ ´Ü¾î¸¸ È¤Àº ¿À¸¥ÂÊ ´Ü¾î¸¸ »ç¿ëÇÏ±âµµ ÇÏ¸ç ¹®ÀåÀÇ ½ÃÀÛ°ú ³¡À» °í·ÁÇÏ±âµµ ÇÑ´Ù.
+# ÀÌ Ã¥¿¡¼­´Â ½¬¿î ÀÌÇØ¸¦ À§ÇØ ÁÂ¿ì µ¿¼öÀÎ ¸Æ¶ô¸¸À» Ãë±Ş
+
+
+### µ¿½Ã¹ß»ı Çà·Ä
+# ÀÌÁ¦ºÎÅÏ ´Ü¾î¸¦ º¤ÅÍ·Î ³ªÅ¸³»´Â ¹æ¹ıÀ» »ı°¢ÇØº¸ÀÚ.
+
+# Åë°è ±â¹İ ±â¹ı(ÁÖ¸ñ ´Ü¾î ÁÖÀ§¿¡ ¾î¶² ´Ü¾î°¡ ¸î ¹øÀÌ³ª µîÀåÇß´Â°¡)
+import sys
+sys.path.append('...')
+import numpy as np
+from common.util import preporcess
+
+text = 'You say goodbye and I say hello.'
+corpus, word_to_id, id_to_word = preporcess(text)
+
+print(corpus) #[0 1 2 3 4 5 6]
+print(id_to_word)
+# {0 : 'you', 1: 'say', 2:'goodbye', 3: 'and', 4: 'i', 5: 'hello', 6: '.'}
+
+# À©µµ¿ì Å©±â°¡ 1ÀÌ°í ID°¡ 0 ÀÎ youºÎÅÍ Åë°è±â¹İ±â¹ıÀ» »ç¿ëÇÑ´Ù¸é
+
+#       you     say     goodbye     and     i       hello       .
+# you   0       1       0           0       0       0           0
+# you¶ó´Â ´Ü¾î¸¦ [0,1,0,0,0,0,0] ¶ó´Â º¤ÅÍ·Î Ç¥ÇöÇÒ ¼ö ÀÖ´Ù.
+
+# ÇØ´ç ÀÛ¾÷À» ¸ğµç ´Ü¾î Àû¿ëÇÑ´Ù¸é =>
+#           you     say     goodbye     and     i       hello       .
+# you       0       1       0           0       0       0           0
+# say       1       0       1           0       1       1           0
+# goodbye   0       1       0           1       0       0           0
+# and       0       0       1           0       1       0           0
+# i         0       1       0           1       0       0           0
+# hello     0       1       0           0       0       0           1
+# .         0       0       0           0       0       1           0
+
+# ÀÌ Ç¥ÀÇ °¢ ÇàÀº ÇØ´ç ´Ü¾î¸¦ Ç¥ÇöÇÏ´Â º¤ÅÍ°¡ µÈ´Ù.
+# À§ÀÇ Ç¥¸¦ 'µ¿½Ã¹ß»ı Çà·Ä(co-occurrence matrix)'¶ó°í ÇÑ´Ù.
+
+# µ¿½Ã¹ß»ıÇà·Ä ÀÌ¿ë
+# C°¡ µ¿½Ã¹ß»ıÇà·ÄÀÏ ¶§(¼ö±â·Î ÀûÀ½)
+C = np.array([
+    [0,1,0,0,0,0,0],
+    [1,0,1,0,1,1,0],
+    [0,1,0,1,0,0,0],
+    [0,0,1,0,1,0,0],
+    [0,1,0,1,0,0,0],
+    [0,1,0,0,0,0,1],
+    [0,0,0,0,0,1,0]
+],dtype=np.int32)
+
+# µ¿½Ã¹ß»ı Çà·ÄÀ» »ç¿ëÇÏ¸é ´Ü¾îÀÇ º¤ÅÍ¸¦ ½±°Ô ¾òÀ» ¼ö ÀÖ´Ù.
+print(C[0]) #ID°¡ 0ÀÎ ´Ü¾îÀÇ º¤ÅÍ Ç¥Çö
+#[0 1 0 0 0 0 0]
+print(C[4]) #ID°¡ 4ÀÎ ´Ü¾îÀÇ º¤ÅÍ Ç¥Çö
+#[0 1 0 1 0 0 0]
+print(C[word_to_id['goodbye']]) #"goodbye"ÀÇ º¤ÅÍ Ç¥Çö
+#[0 1 0 1 0 0 0]
+
+# ¸»¹¶Ä¡·ÎºÎÅÍ µ¿½Ã¹ß»ı Çà·ÄÀ» ¸¸µé¾îÁÖ´Â ÇÔ¼ö ±¸Çö
+def creat_co_matrix(corpus,vocab_size,window_size=1):
+    corpus_size = len(corpus)
+    co_matrix = np.zeros((vocab_size,vocab_size),dtype=np.int32)
+
+    for idx, word_id in enumerate(corpus):
+        for i in range(1,window_size+1):
+            left_idx = idx - i
+            right_idx = idx + i
+
+            if left_idx >= 0:
+                left_word_id = corpus[left_idx]
+                co_matrix[word_id][left_word_id] += 1
+            if right_idx < corpus_size:
+                right_word_id = corpus[right_idx]
+                co_matrix[word_id][right_word_id] += 1
+
+    return co_matrix
+        
+
+# º¤ÅÍ °£ À¯»çµµ
+# ¾Õ¿¡¼­´Â µ¿½Ã¹ß»ı Çà·ÄÀ» È°¿ëÇØ ´Ü¾î¸¦ º¤ÅÍ·Î Ç¥ÇöÇÏ´Â ¹æ¹ıÀ» ¾Ë¾ÆºÃµû ÀÌÁ¦ºÎÅÏ º¤ÅÍ »çÀÌÀÇ À¯»çµµ¸¦ ÃøÁ¤ÇÏ´Â ¹æ¹ıÀ» ¾Ë¾Æº¼ °ÍÀÌ´Ù!
+# º¤ÅÍÀÇ À¯»çµ¹¸£ ³ªÅ¸³¾ ¶§´Â 'ÄÚ»çÀÎ À¯»çµµ'¸¦ ÀÚÁÖ ÀÌ¿ëÇÑ´Ù.
+# x dot y = ||x|| ||y|| cos(theta) ¿¡¼­
+# simlarity(x,y) = (x dot y) / (||x|| ||y||) # ÀÌ ½ÄÀÇ ÇÙ½ÉÀº º¤ÅÍ¸¦ Á¤±ÔÈ­ÇÏ°í ³»ÀûÀ» ±¸ÇÏ´Â °Í.
+
+# ±¸Çö
+# x,y´Â ³ÑÆÄÀÌ ¹è¿­
+def cos_similarity(x,y):
+    nx = x / np.sqrt(np.sum(x**2)) 
+    ny = y / np.sqrt(np.sum(y**2))
+    return np.dot(nx,ny)
+# À§ÀÇ ÄÚµå´Â x¶Ç´Ây°¡ 0º¤ÅÍÀÌ¸é ºĞ¸ğ°¡ 0ÀÌ µÇ¾î ¹®Á¦°¡ »ı±ä´Ù 
+# eps(=0.00000001)¸¦ ºĞ¸ğ¿¡ ´õÇØÁà¼­ ÇØ°á!
+def cos_similarity(x,y):
+    nx = x / (np.sqrt(np.sum(x**2))+eps)
+    ny = y / (np.sqrt(np.sum(y**2))+eps)
+    return np.dot(nx,ny)
+
+# ½ÇÀü¿¹½Ã
+# you¿Í iÀÇ À¯»çµµ¸¦ ±¸ÇÏ´Â ÄÚµå
+import sys
+sys.path.append('...')
+from common.util import preprocess, create_co_matrix, cos_similarity
+text = "You say goodbye and I say hello."
+corpus,word_to_id,id_to_word = preporcess(text)
+vocab_size = len(word_to_id)
+C = creat_co_matrix(corpus,vocab_size)
+c0 = C[id_to_word['you']] # Åë°è±â¹İ±â¹ıÀ» °ÅÄ£ youÀÇ º¤ÅÍ
+c1 = C[id_to_word['I']] # Åë°è±â¹İ±â¹ıÀ» °ÅÄ£ IÀÇ º¤ÅÍ
+print(cos_similarity(c0,c1)) # 0.7071067691154799 #cos_simlarÀº -1~1 »çÀÌÀÇ °ªÀ» °¡Áö¹Ç·Î ºñ±³Àû À¯»çµµ°¡ ³ô´Ù°í ÇÒ ¼ö ÀÖ´Ù.
+
+
+### À¯»ç ´Ü¾îÀÇ ·©Å· Ç¥½Ã
+# ´Ü¾î°¡ ÁÖ¾îÁ³À» ¶§ ÇØ´ç ´Ü¾î¿Í ºñ½ÁÇÑ ´Ü¾î¸¦ À¯»çµµ ¼øÀ¸·Î Ãâ·ÂÇÏ´Â ÇÔ¼ö ±¸Çö
+
+# ÆÄ¶ó¹ÌÅÍ Á¤¸®
+# query °Ë»ö¾î(´Ü¾î), word_to_id, id_to_word(), word_matrix(´Ü¾î º¤ÅÍµéÀ» ¸ğÀº Çà·Ä), top(»óÀ§ ¸î °³±îÁö Ãâ·ÂÇÒÁö ¼³Á¤)
+
+def most_similar(query,word_to_id,id_to_word,word_matrix,top=5):
+    if query not in word_to_id:
+        print(f'{query}¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.')
+        return
+    
+    print(f'\n[query]'+query)
+    query_id = word_to_id[query]
+    query_vec = word_matrix[query_id]
+
+    vocab_size = len(word_to_id)
+    similarity = np.zeros(vocab_size)
+    for i in range(vocab_size):
+        similarity[i] = cos_similarity(word_matrix[i],query_vec)
+
+    count = 0
+    for i in (-1*similarity).argsort():
+    # argsort() ¸Ş¼­µå == ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
+    # ÀÌ¶§ sdimilarity¿¡ -1¸¦ °öÇÏ°í ¿À¸§Â÷¼ø(Å©±â¸¦ ¿ªÀ¸·Î ÇÏ°í ¿À¸§Â÷¼ø) => ³»¸²Â÷¼ø Á¤·Ä
+    # argsort()ÀÇ ¹İÈ¯°ªÀº Å©±âº° Á¤·ÄµÈ °ªµéÀÇ index ¸®½ºÆ®ÀÌ´Ù.
+        if id_to_word[i] == query:
+            continue
+        print(f'{id_to_word} : {similarity[i]}')
+
+        count += 1
+        if count>=top:
+            return
+
+
+### ½ÇÁ¦Àû¿ë
+# import sys
+# sys.path.append('C:\\Users\\rlaxo\\Desktop\\deepscratch\\')
+# from common.util import preprocess, create_co_matrix, most_similar
+
+# text = "You say goodbye and I say hello."
+# corpus,word_to_id,id_to_word = preprocess(text)
+# vocab_size = len(word_to_id)
+# C = create_co_matrix(corpus,vocab_size)
+
+# print(most_similar('you',word_to_id,id_to_word,C,top=5))
+
+# [query] you
+#  goodbye: 0.7071067691154799
+#  i: 0.7071067691154799
+#  hello: 0.7071067691154799
+#  say: 0.0
+#  and: 0.0
+        
+# you¿Í i°¡ ÀÎÄª ´ë¸í»ç·Î µÑÀÌ ºñ½ÁÇÑ°ÍÀº ÀÌÇØ°¡ °¡Áö¸¸ you¿Í goodbye,helloÀÇ À¯»çµµ°¡ ³ôÀº °ÍÀº ÀÌ»óÇÏ´Ù.
+# ¹°·Ğ Áö±İÀº ¸»¹¶Ä¡ÀÇ Å©±â°¡ ³Ê¹« ÀÛ´Ù´Â °ÍÀÌ ¿øÀÎÀÌ±ä ÇÏ´Ù.
+
+
+
