@@ -54,4 +54,71 @@ print(context) # 모델의 입력 데이터들
 #  [4 5]
 #  [1 6]]
 print(target) # [1 2 3 4 1 5] #모델의 정답 레이블들
+# 여전히 단어 ID... => 컴퓨터가 이해할 수 있게 원핫벡터화!
+
+
+### 원핫 표현으로 변환
+# 맥락과 타깃의 데이터세트를 '원핫 벡터'로 변환해야 컴퓨터가 이해할 수 있다.
+# 맥락을 원핫 벡터로 변환할 때 주의할 점은 형상이 변환된다는 것이다.
+# ex) "You say goodbye and I say hello."
+# 맥락(6,2) 타깃(6,)를 원핫으로 한다면 => 맥락(6,2,7) 형상 (6,7) (2x7 행렬이 6개) 
+# 본교재에서는 conver_one_hot() 함수를 사용 파라미터로 '단어ID목록'과 '어휘 수'를 받음
+
+import sys
+sys.path.append("C:\\Users\\rlaxo\\Desktop\\deepscratch")
+from common.util import preprocess, create_contexts_target, convert_one_hot
+
+text = 'You say goodbye and I say hello.'
+corpus, word_to_id, id_to_word = preprocess(text)
+
+contexts, target = create_contexts_target(corpus,window_size=1)
+
+print(contexts)
+print(target)
+
+vocab_size = len(word_to_id)
+target = convert_one_hot(target,vocab_size)
+contexts = convert_one_hot(contexts,vocab_size)
+
+print('-------after one-hot--------')
+
+print(contexts)
+print()
+print(target)
+
+
+# [[0 2]
+#  [1 3]
+#  [2 4]
+#  [3 1]
+#  [4 5]
+#  [1 6]]
+# [1 2 3 4 1 5]
+# -------after one-hot--------
+# [[[1 0 0 0 0 0 0]
+#   [0 0 1 0 0 0 0]]
+
+#  [[0 1 0 0 0 0 0]
+#   [0 0 0 1 0 0 0]]
+
+#  [[0 0 1 0 0 0 0]
+#   [0 0 0 0 1 0 0]]
+
+#  [[0 0 0 1 0 0 0]
+#   [0 1 0 0 0 0 0]]
+
+#  [[0 0 0 0 1 0 0]
+#   [0 0 0 0 0 1 0]]
+
+#  [[0 1 0 0 0 0 0]
+#   [0 0 0 0 0 0 1]]]
+
+# [[0 1 0 0 0 0 0]
+#  [0 0 1 0 0 0 0]
+#  [0 0 0 1 0 0 0]
+#  [0 0 0 0 1 0 0]
+#  [0 1 0 0 0 0 0]
+#  [0 0 0 0 0 1 0]]
+
+
 
