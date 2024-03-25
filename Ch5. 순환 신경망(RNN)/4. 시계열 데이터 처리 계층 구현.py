@@ -20,6 +20,5 @@
 # T개분의 시계열 데이터를 한꺼번에 처리하는 계층을 Time XX으로 부르도록 약속한다.(이 책에서) 이러한 계층이 구현되어 있으면 각 계층을 레고 블록처럼 조립하여 시계열 데이터를 다루는 신경망을 완성할 수 있다.
 # Softmax 계층을 구현할 때는 손시 오차를 구하는 Cross Entropy Error 계층도 함께 구현.
 # 각 RNN 계층의 모든 단어마다의 loss 값을 총합한 후 단어의 갯수만큼으로 나누어 최종 Loss를 산출한다.
-# => L = 1/T(L0 + L1 + ... + L.T-1) (각각의 Loss들은 RNN계층에서의 출력이 Affine을 거쳐 Softmax with Loss를 한 값이다.)\
-
+# => L = 1/T(L0 + L1 + ... + L.T-1) (각각의 Loss들은 RNN계층에서의 출력이 Affine을 거쳐 Softmax with Loss를 한 값이다.)
 
