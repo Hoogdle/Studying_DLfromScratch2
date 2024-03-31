@@ -161,6 +161,12 @@ class AttentionWeight:
         dh = np.sum(dhr,axis=1)
 
         return dhs,dh
+    
+
+### Decoder 개선(3)
+
+
+    
 
 
 
