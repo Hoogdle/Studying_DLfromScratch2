@@ -70,4 +70,5 @@ class PeekySeq2seq(Seq2seq):
         self.decoder = PeekyDecoder(V,D,H)
         self.softmax = TimeSoftmaxWithLoss()
 
-        self.params = 
+        self.params = self.encoder.params + self.decoder.params
+        self.grads = self.encoder.grads + self.decoder.grads
