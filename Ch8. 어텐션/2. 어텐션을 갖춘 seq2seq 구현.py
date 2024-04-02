@@ -41,3 +41,41 @@ class AttentionDecoder:
         self.affine = TimeAffine(affine_W,affine_b)
         layers = [self.embed,self.lstm,self.attention,self.affine]
         
+        self.params, self.grads = [],[]
+        for layer in layers:
+            self.params += layer.params
+            self.grads += layer.grads
+
+    def forward(self,xs,enc_hs):
+        h = enc_hs[:,-1]
+        self.lstm.set_state(h)
+
+        out = self.embed.forward(xs)
+        dec_hs = self.lstm.forward(out)
+        c = self.attention.forward(enc_hs,dec_hs)
+        out = np.concatenate((c,dec_hs),axis=2)
+        score = self.affine.forward(out)
+
+        return score
+
+    def backward(self,dscore):
+        # 깃허브의 코드 참고
+        pass
+
+
+    def generate(self,enc_hs,start_id,sample_size):
+        # 깃허브의 코드 참고
+    
+### seq2seq 구현
+        
+from ch07.seq2seq import Encoder, Seq2seq
+
+class AttentionSeq2seq(Seq2seq):
+    def __init__(self,vocab_size,wordvec_size,hidden_size):
+        args = vocab_size,wordvec_size,hidden_size
+        self.encoder = AttentionEncoder(*args)
+        self.decoder = AttentionDecoder(*args)
+        self.softmax = TimeSoftmaxWithLoss()
+
+        self.params = self.encoder.params + self.decoder.params
+        self.grads = self.encoder.grads + self.decoder.grads
